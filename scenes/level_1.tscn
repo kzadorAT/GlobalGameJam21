@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/house_lateral.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/house.tscn" type="PackedScene" id=3]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 1 )
+spawns_path = NodePath("spawns")
+
+[node name="spawns" type="Node2D" parent="."]
+
+[node name="player_spawn" type="Node2D" parent="spawns"]
+position = Vector2( 480.414, 480.414 )
+
+[node name="player_spawn2" type="Node2D" parent="spawns"]
+position = Vector2( 592.735, 480.414 )
+
+[node name="house" parent="." instance=ExtResource( 3 )]
+position = Vector2( 349.344, 264.458 )
+
+[node name="house2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 549.583, 264.458 )
+
+[node name="house3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 748.762, 264.458 )
+
+[node name="house_lateral" parent="." instance=ExtResource( 2 )]
+position = Vector2( 150.709, 212.952 )

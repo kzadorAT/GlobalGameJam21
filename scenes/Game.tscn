@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/camera.gd" type="Script" id=2]
+[ext_resource path="res://scripts/player_controller.gd" type="Script" id=3]
+[ext_resource path="res://scripts/manager.gd" type="Script" id=4]
+
+[node name="Game" type="Node"]
+
+[node name="Manager" type="Node" parent="."]
+script = ExtResource( 4 )
+player_container_path = NodePath("player_container")
+player_controller_path = NodePath("player_controller")
+
+[node name="player_container" type="Node2D" parent="Manager"]
+
+[node name="Camera2D" type="Camera2D" parent="Manager"]
+current = true
+script = ExtResource( 2 )
+
+[node name="player_controller" type="Node" parent="Manager"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Manager"]
+
+[node name="UI" type="Control" parent="Manager/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="Manager/CanvasLayer/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
