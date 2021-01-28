@@ -1,2 +1,2 @@
-# GolbalGameJam21
+# GlobalGameJam21
 Soy muy vago para buscar a mi gato, el juego.
