@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ronroneo.wav-a2017a8a6df9591d58df12cae3f20f9e.sample"
+
+[deps]
+
+source_file="res://resources/ronroneo.wav"
+dest_files=[ "res://.import/ronroneo.wav-a2017a8a6df9591d58df12cae3f20f9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
