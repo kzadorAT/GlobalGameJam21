@@ -33,3 +33,4 @@ func set_base_color(color):
 
 func set_eyes_color(color):
 	get_node(piezas_ojos).color = color
+

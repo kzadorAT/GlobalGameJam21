@@ -30,6 +30,8 @@ func start_game():
 func load_level():
 	level = load(level_path).instance()
 	add_child(level)
+	$cat_builder.level = level
+
 	pass
 
 

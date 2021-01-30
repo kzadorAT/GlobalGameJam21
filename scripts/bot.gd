@@ -8,8 +8,9 @@ export var gato_path : NodePath
 onready var gato = get_node(gato_path)
 
 ## nav mesh
-export var nav_path : NodePath
-onready var navigator = get_node(nav_path)
+# export var nav_path : NodePath
+# onready var navigator = get_node(nav_path)
+var navigator
 var escape_path = []
 var random_point = Vector2(0,0)
 
@@ -27,7 +28,7 @@ export var arisquicidad_accel = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	init_bot()
+	# init_bot()
 	pass # Replace with function body.
 
 
@@ -42,7 +43,8 @@ func _physics_process(_delta):
 		if physics_stack.has(state_stack.back()):
 			self.call(state_stack.back())
 
-func init_bot():
+func init_bot(_navigator):
+	navigator = _navigator 
 	state_stack.clear()
 	push_state("idle")
 

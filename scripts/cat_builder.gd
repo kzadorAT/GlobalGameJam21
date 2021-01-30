@@ -18,7 +18,7 @@ func _ready():
 
 func instance_cat():
 	# var pos = level.get_random_point()
-	var pos = Vector2(200,500)
+	var pos = Vector2(2000,3000)
 	var gato = gato_loaded.instance()
 	# aqui para randomizar
 	var base = randi() % base_colors.size()
@@ -29,7 +29,7 @@ func instance_cat():
 	gato.set_eyes_color(eye_colors[eyes])
 	container.add_child(gato)
 	gato.global_position = pos
-
+	gato.get_node("bot").init_bot(level.navigator)
 	pass
 
 

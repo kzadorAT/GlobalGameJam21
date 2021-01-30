@@ -45,3 +45,5 @@ base_colors = [ Color( 0.0666667, 0.0627451, 0.0627451, 1 ), Color( 0.733333, 0.
 eye_colors = [ Color( 1, 0, 0, 1 ), Color( 0, 0.156863, 1, 1 ), Color( 0, 0.835294, 1, 1 ), Color( 0.207843, 0.666667, 0.0980392, 1 ), Color( 0.435294, 0.180392, 0.847059, 1 ), Color( 0.431373, 0.933333, 0.360784, 1 ), Color( 0.968627, 0.466667, 0.466667, 1 ), Color( 0.819608, 0.435294, 0.85098, 1 ) ]
 
 [node name="cat_container" type="Node2D" parent="Manager"]
+position = Vector2( -5, 1 )
+z_index = 50
