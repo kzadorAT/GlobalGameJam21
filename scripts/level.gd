@@ -16,3 +16,9 @@ func _ready():
 
 func get_spawn_list():
 	return spawns.get_children()
+
+
+# TODO: conseguir un punto random "walkeable" del mapa
+func get_random_point():
+	pass
+

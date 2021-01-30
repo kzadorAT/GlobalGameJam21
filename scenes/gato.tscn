@@ -154,6 +154,8 @@ radius = 200.0
 "gatos",
 ]]
 script = ExtResource( 10 )
+piezas_base = [ NodePath("poligons/pata_t_d"), NodePath("poligons/pata_f_d"), NodePath("poligons/cola"), NodePath("poligons/cuerpo"), NodePath("poligons/cabeza"), NodePath("poligons/oreja_e"), NodePath("poligons/pata_t_i"), NodePath("poligons/pata_f_i") ]
+piezas_ojos = NodePath("poligons/ojos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -166,7 +168,7 @@ __meta__ = {
 }
 
 [node name="pata_t_d" type="Polygon2D" parent="poligons"]
-position = Vector2( -358.533, -228.452 )
+position = Vector2( -356.533, -228.452 )
 rotation = -0.265526
 color = Color( 0.305882, 0.235294, 0.235294, 1 )
 texture = ExtResource( 7 )

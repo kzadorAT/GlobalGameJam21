@@ -20,6 +20,8 @@ var player = null
 var player_toy = false
 # desde el inspector
 export var arisquidad_max = 10.0
+# TODO: falta modificar el modificador
+var modificador = 0
 export var arisquidad_actual  = 0.0
 export var arisquicidad_accel = 1.5
 
@@ -62,7 +64,7 @@ func idle():
 
 # cuando detecta al jugador
 func alert():
-	if player_near and arisquidad_actual > arisquidad_max:
+	if player_near and arisquidad_actual > arisquidad_max + modificador:
 		push_state("escaping")
 		return
 	elif !player_near:
@@ -87,7 +89,10 @@ func escaping():
 	if escape_path.size() == 0:
 		# posicion random a 500 px de donde se encuentra el gato
 		random_point = gato.global_position + Vector2(randf(), randf()).normalized() * 500
-		escape_path = navigator.get_simple_path(gato.global_position, navigator.get_closest_point(random_point))
+		if navigator:
+			escape_path = navigator.get_simple_path(gato.global_position, navigator.get_closest_point(random_point))
+		else:
+			return
 	# si llegue a un punto en el path lo borro
 	if escape_path[0].distance_to(gato.global_position) < gato.run_speed * get_process_delta_time():
 		escape_path.remove(0)

@@ -15,7 +15,6 @@ onready var player_controller = get_node(player_controller_path)
 
 
 
-
 func _ready():
 	randomize()
 	start_game()
@@ -25,6 +24,7 @@ func start_game():
 	load_level()
 	load_players(1)
 	load_game_ui()
+	$cat_builder.instance_cat()
 
 # carga el nivel
 func load_level():
