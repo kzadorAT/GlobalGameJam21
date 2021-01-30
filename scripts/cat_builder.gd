@@ -21,6 +21,7 @@ func instance_cat():
 	var pos = Vector2(2000,3000)
 	var gato = gato_loaded.instance()
 	# aqui para randomizar
+	# falta armar para las manchitas
 	var base = randi() % base_colors.size()
 	var eyes = randi() % eye_colors.size()
 	print(base)
@@ -30,6 +31,8 @@ func instance_cat():
 	container.add_child(gato)
 	gato.global_position = pos
 	gato.get_node("bot").init_bot(level.navigator)
-	pass
+
+	# guardar un diccionario con la info para armar el gato luego
+	gato.build_info = {"base" : base, "eyes" : eyes}
 
 

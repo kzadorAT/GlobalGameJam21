@@ -9,6 +9,8 @@ export var run_speed = 120
 export (Array,NodePath) var piezas_base
 export var piezas_ojos : NodePath
 
+var build_info = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("caminar")

@@ -6,6 +6,7 @@ signal is_moving
 export var speed = 100
 var toy = false
 var near_cats = []
+var catched_cat_info = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,8 @@ func move(direction):
 
 func catch(gato):
 	if near_cats.has(gato):
+		catched_cat_info = gato.build_info
+		gato.queue_free()
 		# recojo el gato
 		pass
 	pass
