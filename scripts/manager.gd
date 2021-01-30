@@ -4,7 +4,7 @@ var level
 var level_number
 # var players = []
 export var player_numbers = 1
-export var level_path = "res://scenes/level_1.tscn"
+export var level_path = "res://scenes/levels/level_prueba.tscn"
 export var player_path = "res://scenes/player.tscn"
 export var player_container_path : NodePath
 onready var player_container = get_node(player_container_path)

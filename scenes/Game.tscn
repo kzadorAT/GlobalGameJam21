@@ -7,12 +7,13 @@
 
 [node name="Game" type="Node"]
 
-[node name="Manager" type="Node" parent="."]
+[node name="Manager" type="YSort" parent="."]
 script = ExtResource( 4 )
 player_container_path = NodePath("player_container")
 player_controller_path = NodePath("player_controller")
 
 [node name="player_container" type="Node2D" parent="Manager"]
+z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Manager"]
 current = true
