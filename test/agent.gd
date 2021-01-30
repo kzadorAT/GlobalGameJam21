@@ -9,7 +9,8 @@ onready var finish_pos = get_node(finish_pos_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	path_to_follow = nav.get_simple_path(global_position,finish_pos.global_position)
+	#path_to_follow = nav.get_simple_path(global_position,finish_pos.global_position)
+	call_deferred("calculate_path")
 	pass # Replace with function body.
 
 
@@ -21,3 +22,6 @@ func _process(delta):
 			translate(to_local(path_to_follow[0]))
 			path_to_follow.remove(0)
 	pass
+
+func calculate_path():
+	path_to_follow = nav.get_simple_path(global_position,finish_pos.global_position)
