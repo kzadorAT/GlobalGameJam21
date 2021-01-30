@@ -4,7 +4,7 @@ signal is_moving
 
 
 export var speed = 100
-
+var toy = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +16,13 @@ func move(direction):
 	direction = direction.normalized() * speed
 	direction = move_and_slide(direction)
 	# por si esta caminando contra una pared
-	if direction != Vector2.ZERO:
-		emit_signal("is_moving")
+	# if direction != Vector2.ZERO:
+	# 	emit_signal("is_moving")
 
 
 func catch():
 	pass
+
+
+func has_toy():
+	return toy

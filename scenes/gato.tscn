@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Michi Partes/hocico.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Michi Partes/orejas interno.png" type="Texture" id=2]
@@ -11,8 +11,10 @@
 [ext_resource path="res://resources/ronroneo.wav" type="AudioStream" id=9]
 [ext_resource path="res://scripts/gato.gd" type="Script" id=10]
 [ext_resource path="res://scripts/bot.gd" type="Script" id=11]
+[ext_resource path="res://scripts/player_detector.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 40.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "caminar"
@@ -126,24 +128,45 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Skeleton2D/hips:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 60.8099, 30.3297 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "pose"
 
-[node name="gato" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=4]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 200.0
+
+[node name="gato" type="KinematicBody2D" groups=[
+"gatos",
+]]
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="poligons" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="pata_t_d" type="Polygon2D" parent="poligons"]
-position = Vector2( -89.9807, 89.9807 )
+position = Vector2( -358.533, -228.452 )
 rotation = -0.265526
 color = Color( 0.305882, 0.235294, 0.235294, 1 )
 texture = ExtResource( 7 )
@@ -153,7 +176,7 @@ uv = PoolVector2Array( 246.746, 401.775, 272.189, 325.444, 318.935, 356.213, 297
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 1, 1, 1, 1 ) ]
 
 [node name="pata_f_d" type="Polygon2D" parent="poligons"]
-position = Vector2( -127.399, 74.8355 )
+position = Vector2( -395.951, -243.597 )
 rotation = -0.227705
 color = Color( 0.478431, 0.356863, 0.356863, 1 )
 texture = ExtResource( 7 )
@@ -163,6 +186,7 @@ uv = PoolVector2Array( 246.746, 401.775, 272.189, 325.444, 318.935, 356.213, 297
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 1, 1, 1, 1 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0 ) ]
 
 [node name="cola" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 texture = ExtResource( 8 )
 skeleton = NodePath("../../Skeleton2D")
 polygon = PoolVector2Array( 323.445, 343.062, 335.407, 336.842, 358.373, 335.885, 380.861, 320.574, 387.081, 296.651, 384.211, 277.99, 396.172, 259.809, 420.096, 262.201, 430.622, 285.167, 427.751, 311.005, 420.096, 337.799, 407.177, 362.679, 379.904, 372.249, 344.019, 374.641, 322.488, 370.335, 312.919, 358.373 )
@@ -170,6 +194,7 @@ uv = PoolVector2Array( 323.445, 343.062, 335.407, 336.842, 358.373, 335.885, 380
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="cuerpo" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 color = Color( 0.254902, 0.231373, 0.231373, 1 )
 texture = ExtResource( 4 )
 skeleton = NodePath("../../Skeleton2D")
@@ -178,6 +203,7 @@ uv = PoolVector2Array( 198.889, 293.333, 321.111, 286.667, 381.111, 352.222, 342
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 1, 1, 1, 1, 1, 1 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="cabeza" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 color = Color( 0.537255, 0.435294, 0.435294, 1 )
 texture = ExtResource( 3 )
 skeleton = NodePath("../../Skeleton2D")
@@ -186,6 +212,7 @@ uv = PoolVector2Array( 66, 112, 233, 62, 424, 94, 480, 254, 379, 419, 159, 423, 
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="oreja_e" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 texture = ExtResource( 5 )
 skeleton = NodePath("../../Skeleton2D")
 polygon = PoolVector2Array( 112.766, 172.34, 118.617, 106.383, 155.319, 93.617, 351.596, 85.6383, 377.66, 141.489, 376.064, 193.617, 111.17, 197.872 )
@@ -193,6 +220,7 @@ uv = PoolVector2Array( 112.766, 172.34, 118.617, 106.383, 155.319, 93.617, 351.5
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="oreja_i" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 texture = ExtResource( 2 )
 skeleton = NodePath("../../Skeleton2D")
 polygon = PoolVector2Array( 133.136, 118.935, 360.947, 111.834, 360.947, 182.84, 130.769, 186.391 )
@@ -200,6 +228,7 @@ uv = PoolVector2Array( 133.136, 118.935, 360.947, 111.834, 360.947, 182.84, 130.
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 1, 1, 1, 1 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0 ) ]
 
 [node name="hocico" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 texture = ExtResource( 1 )
 skeleton = NodePath("../../Skeleton2D")
 polygon = PoolVector2Array( 234.043, 214.362, 260.106, 213.83, 278.723, 234.043, 275.532, 268.617, 243.085, 281.915, 213.83, 275, 203.191, 246.809, 211.702, 224.468 )
@@ -207,6 +236,7 @@ uv = PoolVector2Array( 234.043, 214.362, 260.106, 213.83, 278.723, 234.043, 275.
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="ojos" type="Polygon2D" parent="poligons"]
+position = Vector2( -268.552, -318.433 )
 color = Color( 0.113725, 0.192157, 0.501961, 1 )
 texture = ExtResource( 6 )
 skeleton = NodePath("../../Skeleton2D")
@@ -215,7 +245,7 @@ uv = PoolVector2Array( 158.511, 215.426, 176.596, 196.809, 318.085, 197.34, 340.
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="pata_t_i" type="Polygon2D" parent="poligons"]
-position = Vector2( -88.8473, 134.991 )
+position = Vector2( -357.399, -183.442 )
 rotation = -0.38196
 color = Color( 0.239216, 0.129412, 0.129412, 1 )
 texture = ExtResource( 7 )
@@ -225,7 +255,7 @@ uv = PoolVector2Array( 246.746, 401.775, 272.189, 325.444, 318.935, 356.213, 297
 bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola/cola_2/cola_3"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cuerpo/cabeza"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_i"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_f_d"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/pata_t_i"), PoolRealArray( 1, 1, 1, 1 ), NodePath("hips/pata_t_d"), PoolRealArray( 0, 0, 0, 0 ) ]
 
 [node name="pata_f_i" type="Polygon2D" parent="poligons"]
-position = Vector2( -13.9953, 13.2014 )
+position = Vector2( -282.547, -305.231 )
 color = Color( 0.619608, 0.352941, 0.352941, 1 )
 texture = ExtResource( 7 )
 skeleton = NodePath("../../Skeleton2D")
@@ -235,24 +265,25 @@ bones = [ NodePath("hips"), PoolRealArray( 0, 0, 0, 0 ), NodePath("hips/cola"), 
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 visible = false
+scale = Vector2( 0.5, 0.5 )
 
 [node name="hips" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( 330.973, 349.228 )
-rest = Transform2D( 1, 0, 0, 1, 330.973, 349.228 )
+position = Vector2( 60.8099, 30.3297 )
+rest = Transform2D( 1, 0, 0, 1, 60.8099, 30.3297 )
 
 [node name="cola" type="Bone2D" parent="Skeleton2D/hips"]
-rotation = 0.00752456
-rest = Transform2D( 1, 0, 0, 1, 0, 0 )
+rotation = 0.0176823
+rest = Transform2D( 0.999844, 0.0176814, -0.0176814, 0.999844, 0, 0 )
 
 [node name="cola_2" type="Bone2D" parent="Skeleton2D/hips/cola"]
 position = Vector2( 38.2269, 5.66324 )
-rotation = 0.136495
-rest = Transform2D( 1, -0.000779292, 0.000779292, 1, 38.2269, 5.66324 )
+rotation = 0.0611597
+rest = Transform2D( 0.99813, 0.0611216, -0.0611216, 0.99813, 38.2269, 5.66324 )
 
 [node name="cola_3" type="Bone2D" parent="Skeleton2D/hips/cola/cola_2"]
 position = Vector2( 35.879, -38.9293 )
-rotation = -1.50129
-rest = Transform2D( -0.0198583, -0.999803, 0.999803, -0.0198583, 35.879, -38.9293 )
+rotation = -1.62977
+rest = Transform2D( -0.0589373, -0.998262, 0.998262, -0.0589373, 35.879, -38.9293 )
 default_length = 40.0
 
 [node name="cuerpo" type="Bone2D" parent="Skeleton2D/hips"]
@@ -260,33 +291,33 @@ rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="cabeza" type="Bone2D" parent="Skeleton2D/hips/cuerpo"]
 position = Vector2( -89.904, -37.991 )
-rotation = -1.49051
+rotation = -1.5763
 scale = Vector2( 10.5959, 1.65166 )
-rest = Transform2D( -0.0798726, -10.5956, 1.65161, -0.0124503, -89.904, -37.991 )
+rest = Transform2D( -0.0582999, -10.5957, 1.65163, -0.00908763, -89.904, -37.991 )
 
 [node name="pata_f_i" type="Bone2D" parent="Skeleton2D/hips"]
 position = Vector2( -53.459, 19.4924 )
-rotation = 2.00872
+rotation = 2.12257
 scale = Vector2( 3.03977, 0.39413 )
-rest = Transform2D( -0.697988, 2.95855, -0.383599, -0.0904997, -53.459, 19.4924 )
+rest = Transform2D( -1.59344, 2.58866, -0.33564, -0.206602, -53.459, 19.4924 )
 
 [node name="pata_f_d" type="Bone2D" parent="Skeleton2D/hips"]
 position = Vector2( -94.4399, 5.6731 )
-rotation = 1.62479
+rotation = 1.51401
 scale = Vector2( 2.95714, 8.83802 )
-rest = Transform2D( -0.0517328, 2.95669, -8.83667, -0.154614, -94.4399, 5.6731 )
+rest = Transform2D( 0.167834, 2.95237, -8.82377, 0.501606, -94.4399, 5.6731 )
 
 [node name="pata_t_i" type="Bone2D" parent="Skeleton2D/hips"]
 position = Vector2( -16.3518, 10.345 )
-rotation = 1.44198
+rotation = 1.35191
 scale = Vector2( 2.84511, -0.496485 )
-rest = Transform2D( 0.315455, 2.82757, 0.493424, -0.0550485, -16.3518, 10.345 )
+rest = Transform2D( 0.617795, 2.77723, 0.484639, -0.107808, -16.3518, 10.345 )
 
 [node name="pata_t_d" type="Bone2D" parent="Skeleton2D/hips"]
 position = Vector2( -40.7126, 11.3461 )
-rotation = 1.72468
+rotation = 1.80076
 scale = Vector2( 2.87725, 1.28896 )
-rest = Transform2D( -0.48822, 2.83553, -1.27027, -0.218715, -40.7126, 11.3461 )
+rest = Transform2D( -0.655836, 2.80151, -1.25503, -0.293804, -40.7126, 11.3461 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/caminar = SubResource( 2 )
@@ -297,3 +328,18 @@ stream = ExtResource( 9 )
 
 [node name="bot" type="Node" parent="."]
 script = ExtResource( 11 )
+gato_path = NodePath("..")
+
+[node name="player_detector" type="Area2D" parent="."]
+script = ExtResource( 12 )
+bot_path = NodePath("../bot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
+shape = SubResource( 4 )
+
+[node name="vision_lost" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision_lost"]
+shape = SubResource( 5 )
+[connection signal="area_entered" from="player_detector" to="player_detector" method="_on_player_detector_area_entered"]
+[connection signal="area_exited" from="vision_lost" to="player_detector" method="_on_player_detector_area_exited"]

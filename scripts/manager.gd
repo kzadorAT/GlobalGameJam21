@@ -17,6 +17,7 @@ onready var player_controller = get_node(player_controller_path)
 
 
 func _ready():
+	randomize()
 	start_game()
 	pass
 

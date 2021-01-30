@@ -8,7 +8,8 @@ export var gato_path : NodePath
 onready var gato = get_node(gato_path)
 
 ## nav mesh
-var navigator
+export var nav_path : NodePath
+onready var navigator = get_node(nav_path)
 var escape_path = []
 var random_point = Vector2(0,0)
 
@@ -78,23 +79,25 @@ func escaping():
 	# si escape del jugador
 	if !player_near:
 		# limpio y salgo del estado
-		escape_path.clear()
+		escape_path = []
 		pop_state()
 		return
 	
 	# calculo un path si no lo tengo
 	if escape_path.size() == 0:
-		escape_path = navigator.get_simple_path(gato.global_position, random_point)
+		# posicion random a 500 px de donde se encuentra el gato
+		random_point = gato.global_position + Vector2(randf(), randf()).normalized() * 500
+		escape_path = navigator.get_simple_path(gato.global_position, navigator.get_closest_point(random_point))
 	# si llegue a un punto en el path lo borro
-	if escape_path.front().distance_to(gato.global_position) < gato.run_speed * get_process_delta_time():
-		escape_path.pop_front()
+	if escape_path[0].distance_to(gato.global_position) < gato.run_speed * get_process_delta_time():
+		escape_path.remove(0)
 		# si me quedara sin puntos recalculo en el siguiente frame
 		# (o simplemente podria volver a llamar a escaping de manera recursiva, pero no me gusta)
 		if escape_path.size() == 0:
 			return
 	else:
 		# me muevo hacia el siguiente punto en mi path
-		gato.run(gato.to_local(escape_path.front()).normalized())
+		gato.run(gato.to_local(escape_path[0]).normalized())
 
 
 # atraido por un juguete o comida
@@ -116,3 +119,15 @@ func captured():
 	pass
 
 #==========================
+
+func add_player(_player, toy = false):
+	player = _player
+	player_near = true
+	player_toy = toy
+	pass
+
+func remove_player():
+	player = null
+	player_near = false
+	player_toy = false
+	pass
