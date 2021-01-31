@@ -51,3 +51,6 @@ func get_random_spawn_point():
 			return get_random_point(cesped_id)
 		2:
 			return get_random_point(vereda_id)
+
+func get_spawn_on_vereda():
+	return get_random_point(cesped_id)
