@@ -4,7 +4,9 @@ signal is_moving
 
 
 export var speed = 100
-
+var toy = false
+var near_cats = []
+var catched_cat_info = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +18,30 @@ func move(direction):
 	direction = direction.normalized() * speed
 	direction = move_and_slide(direction)
 	# por si esta caminando contra una pared
-	if direction != Vector2.ZERO:
-		emit_signal("is_moving")
+	# if direction != Vector2.ZERO:
+	# 	emit_signal("is_moving")
 
 
-func catch():
+func catch(gato):
+	if near_cats.has(gato):
+		catched_cat_info = gato.build_info
+		gato.queue_free()
+		# recojo el gato
+		pass
 	pass
+
+
+func has_toy():
+	return toy
+
+
+func _on_catch_area_body_entered(body):
+	if body.is_in_group("gatos"):
+		near_cats.append(body)
+
+
+func _on_catch_area_body_exited(body):
+	if body.is_in_group("gatos"):
+		near_cats.erase(body)
+
+

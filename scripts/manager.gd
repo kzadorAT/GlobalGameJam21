@@ -4,7 +4,7 @@ var level
 var level_number
 # var players = []
 export var player_numbers = 1
-export var level_path = "res://scenes/level_1.tscn"
+export var level_path = "res://scenes/levels/level_prueba.tscn"
 export var player_path = "res://scenes/player.tscn"
 export var player_container_path : NodePath
 onready var player_container = get_node(player_container_path)
@@ -15,8 +15,8 @@ onready var player_controller = get_node(player_controller_path)
 
 
 
-
 func _ready():
+	randomize()
 	start_game()
 	pass
 
@@ -24,11 +24,14 @@ func start_game():
 	load_level()
 	load_players(1)
 	load_game_ui()
+	$cat_builder.instance_cat()
 
 # carga el nivel
 func load_level():
 	level = load(level_path).instance()
 	add_child(level)
+	$cat_builder.level = level
+
 	pass
 
 
