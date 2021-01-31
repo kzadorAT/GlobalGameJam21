@@ -29,10 +29,12 @@ func cat_received():
 
 func _on_player_near(body):
 	if body.is_in_group("player"):
+		print("muestro")
 		# muestro el globo con el gatito
 		pass
 
 func _on_player_exit(body):
 	if body.is_in_group("player"):
+		print("oculto")
 		# oculto el globo con el gatito
 		pass
