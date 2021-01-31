@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/cat_builder.gd" type="Script" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Menu/botones/exit boton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Menu/botones/multiplayer boton.png" type="Texture" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Menu/Nombre del juego/nombre juego.png" type="Texture" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 2
@@ -104,6 +105,10 @@ texture_hover = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="Manager/CanvasLayer/UI"]
+position = Vector2( 417.486, 100.006 )
+texture = ExtResource( 11 )
 
 [node name="cat_builder" type="Node" parent="Manager"]
 script = ExtResource( 1 )
