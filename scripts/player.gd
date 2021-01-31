@@ -38,6 +38,7 @@ func catch(gato):
 func deliver_cat(client):
 	if client.cat_info == catched_cat_info:
 		catched_cat_info = {}
+		client.cat_received()
 		return true
 	else: 
 		return false

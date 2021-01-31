@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Player 1 Partes/Plantilla Personaje.png" type="Texture" id=1]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Catched"
 length = 0.8
 loop = true
@@ -151,8 +151,7 @@ tracks/11/keys = {
 "values": [ 13.1691, 4.82696, 13.1691 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Rest"
+[sub_resource type="Animation" id=2]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -413,8 +412,7 @@ tracks/11/keys = {
 "values": [ 13.1691, 4.82696, 13.1691 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Walk"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Skeleton2D/Torso/PiernaIzq/FemurIzq:rotation_degrees")
@@ -686,18 +684,18 @@ position = Vector2( -435.975, -734.047 )
 rotation = -0.000541485
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( 453.408, 518.58 )
-rotation = 0.212095
+position = Vector2( 443.198, 496.575 )
+rotation = 0.0203125
 rest = Transform2D( 1, 0, 0, 1, 431.034, 482.054 )
 
 [node name="Cuello" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( -7.60892, -156.959 )
-rotation = 0.0246145
+rotation = 0.0398731
 rest = Transform2D( 1, 0, 0, 1, -7.60892, -156.959 )
 
 [node name="Cabeza" type="Bone2D" parent="Skeleton2D/Torso/Cuello"]
 position = Vector2( -3.29865, -33.3202 )
-rotation = -1.68827
+rotation = -1.56772
 scale = Vector2( 11.5303, -1878.04 )
 rest = Transform2D( -0.151031, -11.5293, -1877.88, 24.5997, -3.29865, -33.3202 )
 
@@ -706,12 +704,12 @@ position = Vector2( 20, 0 )
 
 [node name="BrazoIzq" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( -49.3891, -156.176 )
-rotation = -1.58108
+rotation = -0.343547
 rest = Transform2D( 1, 0, 0, 1, -49.3891, -156.176 )
 
 [node name="AntebrazoIzq" type="Bone2D" parent="Skeleton2D/Torso/BrazoIzq"]
 position = Vector2( -68.1366, 98.9418 )
-rotation = 1.17269
+rotation = 2.13754
 scale = Vector2( 5.9712, 1 )
 rest = Transform2D( -3.81929, 4.59001, -0.768692, -0.639619, -65.4639, 93.5964 )
 
@@ -720,12 +718,12 @@ position = Vector2( 20, 0 )
 
 [node name="BrazoDer" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( -21.5967, -151.995 )
-rotation = -0.0775584
+rotation = 0.775481
 rest = Transform2D( 1, 0, 0, 1, 42.7149, -142.828 )
 
 [node name="AnterazoDer" type="Bone2D" parent="Skeleton2D/Torso/BrazoDer"]
 position = Vector2( 69.1801, 60.8419 )
-rotation = -0.435262
+rotation = 0.690793
 scale = Vector2( 6.86297, 1 )
 rest = Transform2D( 5.25923, 4.40918, -0.64246, 0.76632, 69.1801, 60.8419 )
 
@@ -734,12 +732,12 @@ position = Vector2( 20, 0 )
 
 [node name="PiernaIzq" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( -46.5482, 22.522 )
-rotation = 0.100153
+rotation = -0.00415402
 rest = Transform2D( 1, 0, 0, 1, -51.3104, 31.952 )
 
 [node name="FemurIzq" type="Bone2D" parent="Skeleton2D/Torso/PiernaIzq"]
 position = Vector2( -14.386, 106.565 )
-rotation = 2.256
+rotation = 2.34834
 scale = Vector2( 7.21174, 1.34408 )
 rest = Transform2D( -1.25039, 7.10252, -1.32373, -0.23304, -14.386, 106.565 )
 
@@ -748,12 +746,12 @@ position = Vector2( 20, 0 )
 
 [node name="PiernaDer" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( 29.9176, 5.26173 )
-rotation = -0.319284
+rotation = 0.00188351
 rest = Transform2D( 1, 0, 0, 1, 35.9166, 23.9703 )
 
 [node name="FemurDer" type="Bone2D" parent="Skeleton2D/Torso/PiernaDer"]
 position = Vector2( 22.0021, 113.323 )
-rotation = 1.33276
+rotation = 1.29275
 scale = Vector2( 7.24, 1 )
 rest = Transform2D( 1.57814, 7.06591, -0.975954, 0.217974, 22.0021, 113.323 )
 
@@ -768,7 +766,7 @@ use_magnet = true
 target_node = NodePath("../Torso/PiernaIzq/FemurIzq/end")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Catched = SubResource( 4 )
-anims/Rest = SubResource( 1 )
+anims/Catched = SubResource( 1 )
+anims/Rest = SubResource( 2 )
 anims/Run = SubResource( 3 )
-anims/Walk = SubResource( 2 )
+anims/Walk = SubResource( 4 )
