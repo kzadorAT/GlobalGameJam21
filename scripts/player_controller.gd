@@ -32,3 +32,10 @@ func on_cat_picked(_v, event, _i, gato):
 		if event.pressed:
 			player.catch(gato)
 	pass
+
+
+func deliver_cat(_v, event, _i, client):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			player.deliver_cat(client)
+	pass

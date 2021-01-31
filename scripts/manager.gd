@@ -48,8 +48,8 @@ func _ready():
 func start_game():
 	load_level()
 	load_players(1)
-	load_cats(40)
-	# load_client(35)
+	load_cats(1)
+	load_client(1)
 	load_game_ui()
 	$cat_builder.instance_cat()
 
@@ -99,8 +99,10 @@ func load_cats(cant):
 func load_client(cant):
 	for i in range(cant):
 		var client = client_loaded.instance()
+		client.manager = self
 		client.set_cat()
 		client_container.add_child(client)
 		client.global_position = level.get_random_spawn_point()
+		client.connect("input_event",player_controller,"deliver_cat", [client])
 		pass
 	pass

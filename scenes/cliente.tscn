@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/cliente.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="cliente" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.5142, 32.8947 )
+
+[node name="cliente" type="KinematicBody2D"]
+position = Vector2( -1, -1 )
+input_pickable = true
 script = ExtResource( 1 )
+gato_globo_path = NodePath("globo/globo/gato")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0.666667, 0.666667, 1 )
@@ -16,4 +25,4 @@ position = Vector2( 0, -85.7714 )
 [node name="globo" type="Sprite" parent="globo"]
 
 [node name="gato" type="Node2D" parent="globo/globo"]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )
