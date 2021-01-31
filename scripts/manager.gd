@@ -12,13 +12,27 @@ export var player_controller_path : NodePath
 onready var player_controller = get_node(player_controller_path)
 var cat_builder
 
+# Buttons & UI
+
+
+export var ui_main_path : NodePath
+onready var  ui_main = get_node(ui_main_path)
+
+# export var btn_singlemode_path : NodePath
+# onready var  btn_singlemode = get_node(btn_singlemode_path)
+# export var btn_multimode_path : NodePath
+# onready var  btn_multimode = get_node(btn_multimode_path)
+# export var btn_exit_path : NodePath
+# onready var  btn_exit = get_node(btn_exit_path)
 
 
 
 func _ready():
 	randomize()
 	cat_builder = $cat_builder
-	start_game()
+
+
+	#start_game()
 	pass
 
 func start_game():
@@ -55,3 +69,7 @@ func load_players(_number):
 # carga la ui de juego
 func load_game_ui():
 	pass
+
+func on_button_start():
+	ui_main.hide()
+	start_game()
