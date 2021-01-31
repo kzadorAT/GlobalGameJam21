@@ -8,6 +8,10 @@ export var level_path = "res://scenes/levels/level_prueba.tscn"
 export var player_path = "res://scenes/player.tscn"
 export var player_container_path : NodePath
 onready var player_container = get_node(player_container_path)
+
+export var client_container_path : NodePath
+onready var client_container = get_node(client_container_path)
+
 export var player_controller_path : NodePath
 onready var player_controller = get_node(player_controller_path)
 
@@ -16,7 +20,7 @@ onready var sprite_temp = get_node(sprite_temp_path)
 var cat_builder
 
 
-export var client_path = ""
+export var client_path = "res://scenes/cliente.tscn"
 onready var client_loaded = load(client_path)
 # Buttons & UI
 
@@ -45,6 +49,7 @@ func start_game():
 	load_level()
 	load_players(1)
 	load_cats(40)
+	# load_client(35)
 	load_game_ui()
 	$cat_builder.instance_cat()
 
@@ -93,6 +98,9 @@ func load_cats(cant):
 
 func load_client(cant):
 	for i in range(cant):
-		
+		var client = client_loaded.instance()
+		client.set_cat()
+		client_container.add_child(client)
+		client.global_position = level.get_random_spawn_point()
 		pass
 	pass
