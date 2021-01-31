@@ -15,6 +15,9 @@ export var sprite_temp_path : NodePath
 onready var sprite_temp = get_node(sprite_temp_path)
 var cat_builder
 
+
+export var client_path = ""
+onready var client_loaded = load(client_path)
 # Buttons & UI
 
 
@@ -41,6 +44,7 @@ func _ready():
 func start_game():
 	load_level()
 	load_players(1)
+	load_cats(40)
 	load_game_ui()
 	$cat_builder.instance_cat()
 
@@ -65,7 +69,7 @@ func load_players(_number):
 		var p = player_loaded.instance()
 		player_container.add_child(p)
 		p.global_position = level.get_spawn_list()[i].global_position
-
+		p.manager = self
 		player_controller.player = p
 		$Camera2D.player = p
 
@@ -76,3 +80,19 @@ func load_game_ui():
 func on_button_start():
 	ui_main.hide()
 	start_game()
+
+
+
+
+func load_cats(cant):
+	for i in range(cant):
+		$cat_builder.instance_cat()
+		pass
+	pass
+
+
+func load_client(cant):
+	for i in range(cant):
+		
+		pass
+	pass
