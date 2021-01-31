@@ -12,8 +12,19 @@ var manager
 export var animation_path : NodePath
 onready var anim = get_node(animation_path)
 
+
+export var visual_path : NodePath
+onready var visual = get_node(visual_path)
+var scale_x
+var timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	scale_x = visual.scale.x
+	timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = true
+	timer.connect("timeout",self,"stop_anim")
+	anim.play("Rest")
 	pass # Replace with function body.
 
 
@@ -21,14 +32,19 @@ func move(direction):
 	#look_at(global_position + direction)
 	direction = direction.normalized() * speed
 	direction = move_and_slide(direction)
-	if(((direction.x != 0) || (direction.y != 0)) && !anim.is_playing()):
+	if(((direction.x != 0) || (direction.y != 0)) && (!anim.is_playing() or anim.current_animation != "Walk")):
+
 		anim.play("Walk")
 	if(direction == Vector2.ZERO):
 		anim.play("Rest")
 	# por si esta caminando contra una pared
 	# if direction != Vector2.ZERO:
 	# 	emit_signal("is_moving")
-
+	if direction.x < 0:
+		visual.scale.x = -scale_x
+	else:
+		visual.scale.x = scale_x
+	timer.start(.2)
 # atrapa a un gato
 func catch(gato):
 	if near_cats.has(gato):
@@ -64,3 +80,5 @@ func _on_catch_area_body_exited(body):
 		near_cats.erase(body)
 
 
+func stop_anim():
+	anim.play("Rest")

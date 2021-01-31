@@ -48,8 +48,8 @@ func _ready():
 func start_game():
 	load_level()
 	load_players(1)
-	load_cats(1)
-	load_client(1)
+	load_cats(40)
+	load_client(40)
 	load_game_ui()
 	$cat_builder.instance_cat()
 

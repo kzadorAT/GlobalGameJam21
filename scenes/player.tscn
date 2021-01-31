@@ -18,6 +18,7 @@ radius = 56.376
 script = ExtResource( 2 )
 speed = 200
 animation_path = NodePath("Node2D/AnimationPlayer")
+visual_path = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -43,6 +44,34 @@ shape = SubResource( 3 )
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 scale = Vector2( 0.2, 0.2 )
+
+[node name="Torso" parent="Node2D/Skeleton2D" index="0"]
+position = Vector2( 452.786, 528.763 )
+rotation = 0.229844
+
+[node name="Cabeza" parent="Node2D/Skeleton2D/Torso/Cuello" index="0"]
+rotation = -1.70583
+
+[node name="BrazoIzq" parent="Node2D/Skeleton2D/Torso" index="1"]
+rotation = -1.60616
+
+[node name="AntebrazoIzq" parent="Node2D/Skeleton2D/Torso/BrazoIzq" index="0"]
+rotation = 1.16655
+
+[node name="BrazoDer" parent="Node2D/Skeleton2D/Torso" index="2"]
+rotation = -0.101043
+
+[node name="AnterazoDer" parent="Node2D/Skeleton2D/Torso/BrazoDer" index="0"]
+rotation = -0.429229
+
+[node name="PiernaIzq" parent="Node2D/Skeleton2D/Torso" index="3"]
+rotation = 0.283599
+
+[node name="PiernaDer" parent="Node2D/Skeleton2D/Torso" index="4"]
+rotation = -0.520419
+
+[node name="FemurDer" parent="Node2D/Skeleton2D/Torso/PiernaDer" index="0"]
+rotation = 1.25121
 [connection signal="body_entered" from="catch_area" to="." method="_on_catch_area_body_entered"]
 [connection signal="body_exited" from="catch_area" to="." method="_on_catch_area_body_exited"]
 
