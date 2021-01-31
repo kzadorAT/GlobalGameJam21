@@ -10,6 +10,9 @@ export var player_container_path : NodePath
 onready var player_container = get_node(player_container_path)
 export var player_controller_path : NodePath
 onready var player_controller = get_node(player_controller_path)
+
+export var sprite_temp_path : NodePath
+onready var sprite_temp = get_node(sprite_temp_path)
 var cat_builder
 
 # Buttons & UI
@@ -46,7 +49,7 @@ func load_level():
 	level = load(level_path).instance()
 	add_child(level)
 	cat_builder.level = level
-
+	sprite_temp.position = level.get_random_spawn_point()
 	pass
 
 

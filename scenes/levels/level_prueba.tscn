@@ -114,6 +114,9 @@ points = PoolVector2Array( 32, 64, 0, 64, 0, 16.0476, 32, 15.5825 )
 script = ExtResource( 2 )
 spawns_path = NodePath("spawns")
 nav_path = NodePath("Navigation2D")
+tile_path = NodePath("Navigation2D/TileMap")
+cesped_id = 1
+vereda_id = 3
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
