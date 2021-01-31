@@ -7,6 +7,8 @@ export var speed = 100
 var toy = false
 var near_cats = []
 var catched_cat_info = {}
+var manager
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,14 +23,24 @@ func move(direction):
 	# if direction != Vector2.ZERO:
 	# 	emit_signal("is_moving")
 
-
+# atrapa a un gato
 func catch(gato):
 	if near_cats.has(gato):
+		if catched_cat_info != {}:
+			# soltar el gato que tenga en la mano
+			manager.cat_builder.instance_by_data(catched_cat_info, gato.global_position)
+		# recojo al gato
 		catched_cat_info = gato.build_info
 		gato.queue_free()
-		# recojo el gato
-		pass
-	pass
+
+
+# entrego el gato al cliente
+func deliver_cat(client):
+	if client.cat_info == catched_cat_info:
+		catched_cat_info = {}
+		return true
+	else: 
+		return false
 
 
 func has_toy():

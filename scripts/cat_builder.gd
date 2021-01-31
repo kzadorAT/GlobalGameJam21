@@ -36,3 +36,11 @@ func instance_cat():
 	gato.build_info = {"base" : base, "eyes" : eyes}
 
 
+func instance_by_data(dict, pos):
+	var gato = gato_loaded.instance()
+	gato.set_base_color(dict["base"])
+	gato.set_eyes_color(dict["eyes"])
+	container.add_child(gato)
+	gato.global_position = pos
+
+	pass
