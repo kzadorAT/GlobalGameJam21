@@ -145,7 +145,6 @@ resource_name = "pose"
 [node name="gato" type="KinematicBody2D" groups=[
 "gatos",
 ]]
-scale = Vector2( 0.5, 0.5 )
 input_pickable = true
 script = ExtResource( 10 )
 piezas_base = [ NodePath("poligons/pata_t_d"), NodePath("poligons/pata_f_d"), NodePath("poligons/cola"), NodePath("poligons/cuerpo"), NodePath("poligons/cabeza"), NodePath("poligons/oreja_e"), NodePath("poligons/pata_t_i"), NodePath("poligons/pata_f_i") ]

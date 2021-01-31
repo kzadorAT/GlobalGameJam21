@@ -16,7 +16,7 @@ func set_cat():
 	cat_info = manager.cat_builder.get_cat_info()
 	var gato_dumb = manager.cat_builder.get_instanced_dumb_cat(cat_info)
 	# gato_globo.add_child(gato_dumb)
-	gato_dumb.ray_pickable = false
+	gato_dumb.input_pickable = false
 	get_node(gato_globo_path).add_child(gato_dumb)
 
 

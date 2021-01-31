@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/cat_builder.gd" type="Script" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
@@ -7,9 +7,9 @@
 [ext_resource path="res://Assets/Menu/menu imagen final.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Menu/botones/single player boton.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Menu/botones/exit boton.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Menu/botones/multiplayer boton.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Menu/botones/single player boton2.png" type="Texture" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Menu/Nombre del juego/nombre juego.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Menu/botones/exit boton2.png" type="Texture" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 2
@@ -19,11 +19,15 @@ blend_mode = 2
 [node name="Manager" type="YSort" parent="."]
 script = ExtResource( 4 )
 player_container_path = NodePath("player_container")
+client_container_path = NodePath("client_container")
 player_controller_path = NodePath("player_controller")
 sprite_temp_path = NodePath("Sprite")
 ui_main_path = NodePath("CanvasLayer/UI")
 
 [node name="player_container" type="Node2D" parent="Manager"]
+z_index = 100
+
+[node name="client_container" type="Node2D" parent="Manager"]
 z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Manager"]
@@ -69,46 +73,32 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Manager/CanvasLayer/UI/HBoxContainer"]
-margin_left = 624.0
+margin_left = 691.0
 margin_right = 1024.0
-margin_bottom = 608.0
+margin_bottom = 600.0
 alignment = 2
 
 [node name="btn_single" type="TextureButton" parent="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer"]
-margin_right = 400.0
-margin_bottom = 200.0
+margin_top = 369.0
+margin_right = 333.0
+margin_bottom = 482.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btn_multi" type="TextureButton" parent="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer"]
-margin_top = 204.0
-margin_right = 400.0
-margin_bottom = 404.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btn_exit" type="TextureButton" parent="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer"]
-margin_top = 408.0
-margin_right = 400.0
-margin_bottom = 608.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
+margin_top = 486.0
+margin_right = 333.0
+margin_bottom = 600.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite" type="Sprite" parent="Manager/CanvasLayer/UI"]
-position = Vector2( 417.486, 100.006 )
-texture = ExtResource( 11 )
 
 [node name="cat_builder" type="Node" parent="Manager"]
 script = ExtResource( 1 )
@@ -125,5 +115,4 @@ material = SubResource( 1 )
 z_index = 50
 texture = ExtResource( 9 )
 [connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_single" to="Manager" method="on_button_start"]
-[connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_multi" to="Manager" method="on_button_start"]
 [connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_exit" to="Manager" method="on_button_start"]
