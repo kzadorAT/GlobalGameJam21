@@ -9,6 +9,8 @@ var near_cats = []
 var catched_cat_info = {}
 var manager
 
+export var animation_path : NodePath
+onready var anim = get_node(animation_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +18,13 @@ func _ready():
 
 
 func move(direction):
-	look_at(global_position + direction)
+	#look_at(global_position + direction)
 	direction = direction.normalized() * speed
 	direction = move_and_slide(direction)
+	if(((direction.x != 0) || (direction.y != 0)) && !anim.is_playing()):
+		anim.play("Walk")
+	if(direction == Vector2.ZERO):
+		anim.play("Rest")
 	# por si esta caminando contra una pared
 	# if direction != Vector2.ZERO:
 	# 	emit_signal("is_moving")
