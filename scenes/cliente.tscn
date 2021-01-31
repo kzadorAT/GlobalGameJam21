@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/cliente.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Clientw.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.5142, 32.8947 )
+extents = Vector2( 30.9136, 68.558 )
 
 [node name="cliente" type="KinematicBody2D"]
 position = Vector2( -1, -1 )
@@ -13,14 +13,18 @@ script = ExtResource( 1 )
 gato_globo_path = NodePath("globo/globo/gato")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 31.9446, -66.5891 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0.666667, 0.666667, 1 )
+position = Vector2( 30.3519, -66.1189 )
+scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 2 )
 
 [node name="globo" type="Node2D" parent="."]
-position = Vector2( 0, -85.7714 )
+position = Vector2( 40.4086, -186.793 )
+scale = Vector2( 2, 2 )
 
 [node name="globo" type="Sprite" parent="globo"]
 
