@@ -8,12 +8,10 @@
 [ext_resource path="res://Assets/Menu/botones/single player boton.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Menu/botones/exit boton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Menu/botones/multiplayer boton.png" type="Texture" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.0617981, 0.527344, 0.0799835, 1, 0.185862, 0.475806, 0.210779, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 2
 
 [node name="Game" type="Node"]
 
@@ -118,10 +116,9 @@ position = Vector2( -5, 1 )
 z_index = 50
 
 [node name="Sprite" type="Sprite" parent="Manager"]
-visible = false
-position = Vector2( 0, 15023.3 )
-scale = Vector2( 305.781, 30773.1 )
-texture = SubResource( 2 )
+material = SubResource( 1 )
+z_index = 50
+texture = ExtResource( 9 )
 [connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_single" to="Manager" method="on_button_start"]
 [connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_multi" to="Manager" method="on_button_start"]
 [connection signal="button_up" from="Manager/CanvasLayer/UI/HBoxContainer/VBoxContainer/btn_exit" to="Manager" method="on_button_start"]
