@@ -30,19 +30,17 @@ func init_cat_builder():
 
 func instance_cat():
 	# var pos = level.get_random_point()
-	var pos = Vector2(2000,3000)
+	var pos = level.get_random_spawn_point()
 	# aqui para randomizar
 	# falta armar para las manchitas
 	var base = randi() % base_colors.size()
 	var eyes = randi() % eye_colors.size()
 	# guardar un diccionario con la info para armar el gato luego
 	var dict = {"base" : base, "eyes" : eyes, "index" : index}
-	print(base)
-	print(eyes)
-	instance_by_data(dict,pos)
+	var gato = instance_by_data(dict,pos)
 	instanced_cats[str(index)] = dict
 	index += 1
-
+	gato.connect("input_event",get_parent().player_controller,"on_cat_picked", [gato])
 
 func instance_by_data(dict, pos):
 	var gato = get_instanced_dumb_cat(dict)
@@ -56,6 +54,7 @@ func instance_by_data(dict, pos):
 	if !instanced_cats.keys().has(str(gato.build_info["index"])):
 		# no deberia entrar aqui
 		pass
+	return gato
 
 
 func get_instanced_dumb_cat(dict):

@@ -26,7 +26,7 @@ func move(direction):
 # atrapa a un gato
 func catch(gato):
 	if near_cats.has(gato):
-		if catched_cat_info != {}:
+		if !catched_cat_info.empty():
 			# soltar el gato que tenga en la mano
 			manager.cat_builder.instance_by_data(catched_cat_info, gato.global_position)
 		# recojo al gato
@@ -37,7 +37,7 @@ func catch(gato):
 # entrego el gato al cliente
 func deliver_cat(client):
 	if client.cat_info == catched_cat_info:
-		catched_cat_info = {}
+		catched_cat_info.clear()
 		client.cat_received()
 		return true
 	else: 
