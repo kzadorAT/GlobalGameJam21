@@ -24,3 +24,11 @@ func _process(_delta):
 			direction.y = 1
 		if direction != Vector2.ZERO:
 			player.move(direction.normalized())
+
+
+
+func on_cat_picked(_v, event, _i, gato):  
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			player.catch(gato)
+	pass

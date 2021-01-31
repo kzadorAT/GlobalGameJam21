@@ -34,7 +34,7 @@ func get_spawn_list():
 func get_random_point(id):
 	var street_cells = tiles.get_used_cells_by_id(id)
 	rng.randomize();
-	var rnumber = rng.randi_range(0, street_cells.size())
+	var rnumber = rng.randi_range(0, street_cells.size() - 1)
 	var random_spawnpoint = street_cells[rnumber]
 
 	print(random_spawnpoint)
@@ -43,7 +43,7 @@ func get_random_point(id):
 
 
 func get_random_spawn_point():
-	var nrandom = rng.randi_range(0,3)
+	var nrandom = rng.randi_range(0,2)
 	match nrandom:
 		0:
 			return get_random_point(calle_id)
